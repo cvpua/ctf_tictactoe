@@ -93,10 +93,12 @@ const getResults = () => {
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
 		})
-        .then(data => data)
-        .then(d=>{alert(
-            JSON.parse(d)["msg"])
-    });
+        .then(res => res)
+        then(data=>data.text()
+                .then(d=>
+                    {alert(JSON.parse(d)["msg"])}
+            )
+        );
 }
 
 const movePicker = (moves,mode) => {
