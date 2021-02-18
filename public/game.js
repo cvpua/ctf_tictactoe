@@ -77,14 +77,23 @@ const opponentMove = (info) =>{
 
 
 const getResults = () => {
+    
+    
 
-    setTimeout(() => {
-		fetch('/tictactoe', {
-			method: "POST",
+    // setTimeout(() => {
+	// 	fetch('/tictactoe', {
+	// 		method: "POST",
+	//         headers: { "Content-Type": "application/json" },
+	//         body: JSON.stringify({result : gameResult})
+	// 	}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
+    // _});
+
+    fetch('/',{
+        method: "POST",
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
-		}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
-    _});
+		})
+        .then(data => data).then(res => console.log(res));
 }
 
 const movePicker = (moves,mode) => {

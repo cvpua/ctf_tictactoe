@@ -12,7 +12,7 @@ router.post('/tictactoe',(req,res) =>{
     if(result == "win" ){
         res.status(200).json({msg: "U so good", tictac:flags.tictactoe});
     }else{
-        res.status(200).json({msg: "Better luck next time!"})
+        res.status(200).json({msg: "Better luck next time!", tictac:"Try again"})
     }
 });
 
