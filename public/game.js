@@ -88,7 +88,7 @@ const getResults = () => {
 	// 	}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
     // _});
 
-    fetch('/',{
+    fetch('/tictactoe',{
         method: "POST",
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
@@ -99,7 +99,6 @@ const getResults = () => {
 const movePicker = (moves,mode) => {
     
     let move = moves[0];
-    console.log(moves)
     if (mode == "MAX"){
         let i;
         for ( i = 1; i < moves.length; i++){
