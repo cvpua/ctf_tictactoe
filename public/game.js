@@ -22,13 +22,13 @@ const move = (tile,coordinates) => {
                 if(player != "X"){
                     gameResult = "lose";
                     getResults();
-                    location.replace(location);
+                    // location.replace(location);
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw";
                 getResults();
-                location.replace(location);
+                // location.replace(location);
             }
             if(playerTurn < 9 && player == "X"){
                 let moves = minValue(board,playerTurn,0)
@@ -48,13 +48,13 @@ const move = (tile,coordinates) => {
                 if(player != "O"){
                     gameResult = "lose";
                     getResults();
-                    location.replace(location);
+                    // location.replace(location);
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw"
                 getResults();
-                location.replace(location);
+                // location.replace(location);
             }
             if(playerTurn < 9 && player == "O"){
                 let moves = minValue(board,playerTurn,0)
