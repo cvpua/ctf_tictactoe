@@ -1,5 +1,5 @@
 const flags = {
-    tictactoe : "flag{a_w0rthy_0pp0n3nt}" 
+    tictactoe : "flag{t1c_t4c_t0e}" 
 }
 
 module.exports = flags;
