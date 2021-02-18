@@ -88,12 +88,15 @@ const getResults = () => {
 	// 	}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
     // _});
 
-    fetch('/tictactoe',{
+    let url = fetch('/tictactoe',{
         method: "POST",
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
 		})
-        .then(data => data).then(res => console.log(res));
+        .then(data => data)
+        .then(res => {
+            console.log(res.json());
+        });
 }
 
 const movePicker = (moves,mode) => {
