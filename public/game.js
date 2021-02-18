@@ -94,9 +94,9 @@ const getResults = () => {
 	        body: JSON.stringify({result : gameResult})
 		})
         .then(data => data)
-        .then(res => {
-            console.log(res.json());
-        });
+        .then(d=>{alert(
+            JSON.parse(d)["msg"])
+    });
 }
 
 const movePicker = (moves,mode) => {
