@@ -88,13 +88,13 @@ const getResults = () => {
 	// 	}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
     // _});
 
-    let url = fetch('/tictactoe',{
+    fetch('/tictactoe',{
         method: "POST",
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
 		})
         .then(res => res)
-        then(data=>data.text()
+        .then(data=>data.text()
                 .then(d=>
                     {alert(JSON.parse(d)["msg"])}
             )
