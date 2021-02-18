@@ -22,13 +22,12 @@ const move = (tile,coordinates) => {
                 if(player != "X"){
                     gameResult = "lose";
                     getResults();
-                    // location.replace(location);
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw";
                 getResults();
-                // location.replace(location);
+                
             }
             if(playerTurn < 9 && player == "X"){
                 let moves = minValue(board,playerTurn,0)
@@ -48,13 +47,13 @@ const move = (tile,coordinates) => {
                 if(player != "O"){
                     gameResult = "lose";
                     getResults();
-                    // location.replace(location);
+                    
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw"
                 getResults();
-                // location.replace(location);
+                
             }
             if(playerTurn < 9 && player == "O"){
                 let moves = minValue(board,playerTurn,0)
@@ -78,16 +77,6 @@ const opponentMove = (info) =>{
 
 const getResults = () => {
     
-    
-
-    // setTimeout(() => {
-	// 	fetch('/tictactoe', {
-	// 		method: "POST",
-	//         headers: { "Content-Type": "application/json" },
-	//         body: JSON.stringify({result : gameResult})
-	// 	}).then(res=>res).then(data=>data.text().then(d=>{alert(JSON.parse(d)["msg"])}));
-    // _});
-
     fetch('/tictactoe',{
         method: "POST",
 	        headers: { "Content-Type": "application/json" },
@@ -206,9 +195,6 @@ const maxValue = (boardCopy,turnCount,depth) => {
         }
     }
 
-    // if (turnCount == 0){
-    //     freeCells = shuffle(freeCells);
-    // }
     
     let results = [];
 
@@ -277,10 +263,7 @@ const minValue = (boardCopy,turnCount,depth) => {
         }
     }
 
-    // if (turnCount == 0){
-    //     freeCells = shuffle(freeCells);
-    // }
-    
+  
     let results = [];
     
     
