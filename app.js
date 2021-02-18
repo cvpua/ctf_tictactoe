@@ -8,7 +8,7 @@ const app = express();
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
-
+app.use(express.static("public"))
 
 
 app.use('/',flags);

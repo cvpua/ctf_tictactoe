@@ -5,12 +5,6 @@ const flags = require('../Flags');
 
 
 
-router.get('/tictactoe', (req,res) =>{
-
-    res.json(flags);
-
-});
-
 
 router.post('/tictactoe',(req,res) =>{
 
