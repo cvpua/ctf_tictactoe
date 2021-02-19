@@ -2,12 +2,12 @@ let board = [[0,0,0],[0,0,0],[0,0,0]]
 let playerTurn = 0;
 let result;
 let player = null;
-let gameResult;
+let gameResult = "pending";
 let roundCount = 1;
 
 const move = (tile,coordinates) => {
     
-    if (player){
+    if (player && gameResult == "pending"){
         let element = document.querySelector(`div#${tile}`);
         let x = coordinates[0]
         let y = coordinates[1]
@@ -123,6 +123,7 @@ const resetBoard = () => {
     let buttonO = document.getElementById("buttonO");
     buttonX.disabled = false;
     buttonO.disabled = false;
+    gameResult = "pending";
 }
 
 const movePicker = (moves,mode) => {
