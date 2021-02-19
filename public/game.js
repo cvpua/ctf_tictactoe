@@ -3,7 +3,7 @@ let playerTurn = 0;
 let result;
 let player = null;
 let gameResult;
-
+let roundCount = 1;
 
 const move = (tile,coordinates) => {
     
@@ -22,12 +22,13 @@ const move = (tile,coordinates) => {
                 if(player != "X"){
                     gameResult = "lose";
                     getResults();
+                    roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw";
                 getResults();
-                
+                roundCount++; 
             }
             if(playerTurn < 9 && player == "X"){
                 let moves = minValue(board,playerTurn,0)
@@ -47,13 +48,13 @@ const move = (tile,coordinates) => {
                 if(player != "O"){
                     gameResult = "lose";
                     getResults();
-                    
+                    roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw"
                 getResults();
-                
+                roundCount++;
             }
             if(playerTurn < 9 && player == "O"){
                 let moves = minValue(board,playerTurn,0)
@@ -62,9 +63,17 @@ const move = (tile,coordinates) => {
             }
         }
      
+        if(roundCount == 6){
+            giveClue();
+        }
+
+    }else{
+        alert("Select your player first!");
+
     }
    
 }
+
 
 const opponentMove = (info) =>{
    
@@ -72,6 +81,7 @@ const opponentMove = (info) =>{
     const y = info[2][1];
     const tile = 'tile' + x.toString() + '-' + y.toString();
     move(tile,[x,y]);
+    
 }
 
 
@@ -88,6 +98,31 @@ const getResults = () => {
                     {alert(JSON.parse(d)["msg"])}
             )
         );
+}
+
+const giveClue = () => {
+    let element = document.querySelector('div#secretPath');
+    element.innerText = "Well I guess you can't defeat me.\n Thank you for playing, here's your prize: \n /secretPath";
+}
+
+const resetBoard = () => {
+    let i;
+    let j;
+    for(i = 0; i < board.length; i++){
+        for (j = 0; j < board[i].length; j++){
+            board[i][j] = 0;
+        }
+    }
+    playerTurn = 0;
+    player = null;
+    let element = document.querySelectorAll(`div.tile`);
+    element.forEach((e) => {
+        e.textContent = '-'
+    });
+    let buttonX = document.getElementById("buttonX");
+    let buttonO = document.getElementById("buttonO");
+    buttonX.disabled = false;
+    buttonO.disabled = false;
 }
 
 const movePicker = (moves,mode) => {
@@ -128,6 +163,9 @@ const choosePlayer = (choice) => {
     let buttonO = document.getElementById("buttonO");
     buttonX.disabled = true;
     buttonO.disabled = true;
+    
+    let round = document.querySelector('div#round');
+    round.textContent = `Round: ${roundCount}`;
 }
 
 const checkBoard = (boardCopy,symbol) => {
