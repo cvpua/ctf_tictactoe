@@ -102,7 +102,7 @@ const getResults = () => {
 
 const giveClue = () => {
     let element = document.querySelector('div#secretPath');
-    element.innerText = "Well I guess you can't defeat me.\n Thank you for playing, here's your prize: \n /secretPath or /sercretPath.html dunno what works xD";
+    element.innerText = "Well I guess you can't defeat me.\n Thank you for playing, here's your prize: \n /secretPath or /secretPath.html dunno what works xD";
 }
 
 const resetBoard = () => {
