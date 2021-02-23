@@ -91,8 +91,8 @@ const getResults = (token) => {
     
     fetch('/tictactoe',{
         method: "POST",
-	        headers: { "Content-Type": "application/json" },
-	        body: JSON.stringify({result : gameResult,'CSRF-Token': token})
+	        headers: { "Content-Type": "application/json",'CSRF-Token': token },
+	        body: JSON.stringify({result : gameResult})
 		})
         .then(res => res)
         .then(data=>data.text()
