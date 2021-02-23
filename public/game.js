@@ -11,7 +11,9 @@ const move = (tile,coordinates) => {
         let element = document.querySelector(`div#${tile}`);
         let x = coordinates[0]
         let y = coordinates[1]
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         
+
         if (playerTurn % 2 == 0 && element.innerText == "-" ){
             element.textContent = "X";
             playerTurn++;
@@ -21,13 +23,13 @@ const move = (tile,coordinates) => {
             if(result){
                 if(player != "X"){
                     gameResult = "lose";
-                    getResults();
+                    getResults(token);
                     roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw";
-                getResults();
+                getResults(token);
                 roundCount++; 
             }
             if(playerTurn < 9 && player == "X"){
@@ -47,13 +49,13 @@ const move = (tile,coordinates) => {
                 console.log("O Win!")
                 if(player != "O"){
                     gameResult = "lose";
-                    getResults();
+                    getResults(token);
                     roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw"
-                getResults();
+                getResults(token);
                 roundCount++;
             }
             if(playerTurn < 9 && player == "O"){
@@ -85,12 +87,12 @@ const opponentMove = (info) =>{
 }
 
 
-const getResults = () => {
+const getResults = (token) => {
     
     fetch('/tictactoe',{
         method: "POST",
 	        headers: { "Content-Type": "application/json" },
-	        body: JSON.stringify({result : gameResult})
+	        body: JSON.stringify({result : gameResult,'CSRF-Token': token})
 		})
         .then(res => res)
         .then(data=>data.text()
@@ -349,3 +351,5 @@ const minValue = (boardCopy,turnCount,depth) => {
     }
     return leaf;
 }
+
+
