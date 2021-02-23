@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-app.use('/public', express.static('public'))
+
 
 // app.set('view engine', 'handlebars');
 app.set('view engine', 'hbs');
@@ -37,9 +37,7 @@ app.use('/',flags);
 // });
 
 
-
-
-
+app.use('/public', express.static('public'))
 
 
 const PORT = process.env.PORT || 5000;

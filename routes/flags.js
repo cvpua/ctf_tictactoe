@@ -11,9 +11,13 @@ router.use(csrfProtection);
 
 router.get('/',(req,res) => {
    
-    res.render('main',{layout: 'index',csrfToken : req.csrfToken(),gameJs});
+    res.render('main',{layout: 'index',csrfToken : req.csrfToken()});
 });
 
+router.get('/secretPath',(req,res) => {
+   
+    res.render('secretPath',{layout: 'index'});
+});
 
 router.post('/tictactoe',(req,res) =>{
 
