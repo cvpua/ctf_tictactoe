@@ -92,7 +92,7 @@ const getResults = () => {
 	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
 		})
-        .then(res => res)
+        .then(res => alert("You won!"))
         .then(data=>data.text()
                 .then(d=>
                     {alert(JSON.parse(d)["msg"])}

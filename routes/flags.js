@@ -3,15 +3,10 @@ const router = express.Router();
 const flags = require('../Flags');
 const gameJs = require('../public/game');
 
-const csrf = require('csurf');
-
-const csrfProtection = csrf();
-
-router.use(csrfProtection);
 
 router.get('/',(req,res) => {
    
-    res.render('main',{layout: 'index',csrfToken : req.csrfToken()});
+    res.render('main',{layout: 'index'});
 });
 
 router.get('/secretPath',(req,res) => {
