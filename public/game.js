@@ -11,9 +11,7 @@ const move = (tile,coordinates) => {
         let element = document.querySelector(`div#${tile}`);
         let x = coordinates[0]
         let y = coordinates[1]
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         
-
         if (playerTurn % 2 == 0 && element.innerText == "-" ){
             element.textContent = "X";
             playerTurn++;
@@ -23,13 +21,13 @@ const move = (tile,coordinates) => {
             if(result){
                 if(player != "X"){
                     gameResult = "lose";
-                    getResults(token);
+                    getResults();
                     roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw";
-                getResults(token);
+                getResults();
                 roundCount++; 
             }
             if(playerTurn < 9 && player == "X"){
@@ -49,13 +47,13 @@ const move = (tile,coordinates) => {
                 console.log("O Win!")
                 if(player != "O"){
                     gameResult = "lose";
-                    getResults(token);
+                    getResults();
                     roundCount++;
                 }
             }
             else if(playerTurn == 9){
                 gameResult = "draw"
-                getResults(token);
+                getResults();
                 roundCount++;
             }
             if(playerTurn < 9 && player == "O"){
@@ -87,11 +85,11 @@ const opponentMove = (info) =>{
 }
 
 
-const getResults = (token) => {
+const getResults = () => {
     
     fetch('/tictactoe',{
         method: "POST",
-	        headers: { "Content-Type": "application/json",'CSRF-Token': token },
+	        headers: { "Content-Type": "application/json" },
 	        body: JSON.stringify({result : gameResult})
 		})
         .then(res => res)
@@ -123,6 +121,8 @@ const resetBoard = () => {
     });
     let buttonX = document.getElementById("buttonX");
     let buttonO = document.getElementById("buttonO");
+    let playerText = document.getElementById("player");
+    playerText.textContent = ""
     buttonX.disabled = false;
     buttonO.disabled = false;
     gameResult = "pending";
@@ -167,8 +167,6 @@ const choosePlayer = (choice) => {
     buttonX.disabled = true;
     buttonO.disabled = true;
     
-    let round = document.querySelector('div#round');
-    round.textContent = `Round: ${roundCount}`;
 }
 
 const checkBoard = (boardCopy,symbol) => {
