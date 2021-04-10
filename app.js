@@ -27,7 +27,7 @@ app.engine('hbs', handlebars({
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
-app.use(session({secret :'mysupersecret',resave: false, saveUninitialized : false}))
+// app.use(session({secret :'mysupersecret',resave: false, saveUninitialized : false}))
 
 app.use('/',flags);
 
