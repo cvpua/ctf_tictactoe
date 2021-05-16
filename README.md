@@ -1,1 +1,1 @@
-Edit me later
+Tictactoe that uses min-max algorithm
